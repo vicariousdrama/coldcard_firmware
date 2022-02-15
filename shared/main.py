@@ -89,9 +89,8 @@ async def more_setup():
                 await start_selftest()
 
         else:
-            # force them to accept terms (unless marked as already done)
-            from actions import accept_terms
-            await accept_terms()
+            from actions import with_love
+            await with_love()
 
         # Prompt for PIN and then pick appropriate top-level menu,
         # based on contents of secure chip (ie. is there

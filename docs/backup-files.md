@@ -201,7 +201,7 @@ fw_date = "2018-02-30"
 fw_version = "SIM"
 
 # User preferences
-setting.terms_ok = 1
+setting.love_ok = 1
 
 # EOF
 ```

@@ -18,7 +18,7 @@ if 1:
     settings.overrides.clear()
     settings.set('chain', 'XTN')
     settings.set('words', True)
-    settings.set('terms_ok', True)
+    settings.set('love_ok', True)
     settings.set('idle_to', 0)
 
     import main
