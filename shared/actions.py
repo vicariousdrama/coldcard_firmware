@@ -47,32 +47,10 @@ Your new Coldcard should have arrived SEALED in a bag with the above number. Ple
 \n
 Take pictures and contact support@coinkite if you have concerns.''', title=bn)
 
-async def accept_terms(*a):
-    # do nothing if they have accepted the terms once (ever), otherwise
-    # force them to read message...
-
-    if settings.get('terms_ok'):
+async def with_love(*a):
+    if settings.get('love_ok'):
         return 
-
-    while 1:
-        ch = await ux_show_story("""\
-By using this product, you are accepting our Terms of Sale and Use.
-
-Read the full document at:
-
-https://
-  coldcard.com
-  /legal
-
-Press OK to accept terms and continue.""", escape='7')
-
-        if ch == 'y':
-            break
-
-    await show_bag_number()
-
-    # Note fact they accepted the terms. Annoying to do more than once.
-    settings.set('terms_ok', 1)
+    settings.set('love_ok', 1)
     settings.save()
 
 async def view_ident(*a):
@@ -803,11 +781,16 @@ async def start_login_sequence():
             dis.fullscreen("ERROR")
             callgate.show_logout(1)
 
+    # do they want love?
+    with_love = settings.get('love_ok', 0)
 
     # Successful login...
 
     # Must re-read settings after login
-    dis.fullscreen("Startup...")
+    if with_love:
+        dis.fullscreen("Startup...with ♥")
+    else:
+        dis.fullscreen("Startup...")
     settings.set_key()
     settings.load(dis)
 

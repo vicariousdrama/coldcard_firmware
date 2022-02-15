@@ -14,7 +14,7 @@ serial = "F1F1F1F1F1F1"
 
 # User preferences
 setting.xfp = 252012867
-setting.terms_ok = 1
+setting.love_ok = 1
 setting.idle_to = 28800
 setting.chain = "BTC"
 

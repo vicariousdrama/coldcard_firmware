@@ -12,7 +12,7 @@ if '-w' in sys.argv:
 elif '-l' in sys.argv:
     # clean out olds pins/secrets.. start with nothing, except a pin code
     sim_defaults = { '_age': 1,
-        'terms_ok': 1,
+        'love_ok': 1,
         '_skip_pin': '12-12',
     }
 
@@ -31,7 +31,7 @@ else:
         'chain': 'XTN',
         'xpub': 'tpubD6NzVbkrYhZ4XzL5Dhayo67Gorv1YMS7j8pRUvVMd5odC2LBPLAygka9p7748JtSq82FNGPppFEz5xxZUdasBRCqJqXvUHq6xpnsMcYJzeh',
         '_skip_pin': '12-12',
-        'terms_ok': 1,
+        'love_ok': 1,
         'xfp': 1130956047,
         'idle_to': 0
     }
@@ -96,7 +96,7 @@ if '--seed' in sys.argv:
     assert len(words) in {12, 18, 24}, "Expected space-separated words: add some quotes"
     pa.pin = b'12-12'
     set_seed_value(words)
-    settings.set('terms_ok', 1)
+    settings.set('love_ok', 1)
     settings.set('_skip_pin', '12-12')
     settings.set('chain', 'XTN')
     print("Seed phrase set, resulting XFP: " + xfp2str(settings.get('xfp')))
@@ -115,7 +115,7 @@ if '--secret' in sys.argv:
         '_pin1_secret': b2a_hex(val),
     })
 
-    sim_defaults['terms_ok'] = 1
+    sim_defaults['love_ok'] = 1
     sim_defaults['_skip_pin'] = '12-12'
     sim_defaults['chain'] = 'XTN'
     sim_defaults['words'] = bool(val[0] & 0x80)
@@ -130,7 +130,7 @@ if '-g' in sys.argv:
 if '--nick' in sys.argv:
     nick = sys.argv[sys.argv.index('--nick') + 1]
     sim_defaults['nick'] = nick
-    sim_defaults['terms_ok'] = 1
+    sim_defaults['love_ok'] = 1
     sim_defaults.pop('_skip_pin', 0)
 
 if '--delay' in sys.argv:

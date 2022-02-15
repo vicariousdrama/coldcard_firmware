@@ -33,7 +33,7 @@ from utils import call_later_ms
 #   b39skip = (bool) skip discussion about use of BIP-39 passphrase
 #   idle_to = idle timeout period (seconds)
 #   _age = internal verison number for data (see below)
-#   terms_ok = customer has signed-off on the terms of sale
+#   love_ok = device marked as having love
 #   tested = selftest has been completed successfully
 #   multisig = list of defined multisig wallets (complex)
 #   pms = trust/import/distrust xpubs found in PSBT files
