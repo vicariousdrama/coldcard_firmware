@@ -217,3 +217,11 @@ FactoryMenu = [
     MenuItem("Debug Functions", menu=DebugFunctionsMenu),
     MenuItem("Perform Selftest", f=start_selftest),
 ]
+
+
+FOSSNormalSystem = [
+    MenuItem('FOSS with ♥'),
+    MenuItem("About FOSS", f=about_foss),
+    MenuItem("Upgrade", menu=UpgradeMenu),
+    MenuItem('Secure Logout', f=logout_now),
+]

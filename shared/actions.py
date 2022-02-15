@@ -44,32 +44,10 @@ Your new Coldcard should have arrived SEALED in a bag with the above number. Ple
 \n
 Take pictures and contact support@coinkite if you have concerns.''', title=bn)
 
-async def accept_terms(*a):
-    # do nothing if they have accepted the terms once (ever), otherwise
-    # force them to read message...
-
-    if settings.get('terms_ok'):
+async def accept_love(*a):
+    if settings.get('love_ok'):
         return 
-
-    while 1:
-        ch = await ux_show_story("""\
-By using this product, you are accepting our Terms of Sale and Use.
-
-Read the full document at:
-
-https://
-  coldcardwallet
-  .com/legal
-
-Press OK to accept terms and continue.""", escape='7')
-
-        if ch == 'y':
-            break
-
-    await show_bag_number()
-
-    # Note fact they accepted the terms. Annoying to do more than once.
-    settings.set('terms_ok', 1)
+    settings.set('love_ok', 1)
     settings.save()
 
 async def view_ident(*a):
@@ -706,7 +684,7 @@ async def start_login_sequence():
 def goto_top_menu():
     # Start/restart menu system
     from menu import MenuSystem
-    from flow import VirginSystem, NormalSystem, EmptyWallet, FactoryMenu
+    from flow import VirginSystem, FOSSNormalSystem, EmptyWallet, FactoryMenu
     from main import pa, hsm_active
 
     if hsm_active:
@@ -720,7 +698,7 @@ def goto_top_menu():
     else:
         assert pa.is_successful(), "nonblank but wrong pin"
 
-        m = MenuSystem(EmptyWallet if pa.is_secret_blank() else NormalSystem)
+        m = MenuSystem(EmptyWallet if pa.is_secret_blank() else FOSSNormalSystem)
 
     the_ux.reset(m)
 
@@ -1552,5 +1530,13 @@ has occured in the detection logic.''')
     history.OutptValueCache.clear()
 
     await ux_dramatic_pause("Cleared.", 3)
+
+async def about_foss(*a):
+    await ux_show_story("""\
+This software running on the Coldcard is licensed via the GNU General Public License (GPL), version 3, 
+a popular Open Source license.  \n\n This makes this software free. \n\nYou can modify this code in the 
+version this was released.  And yes, you can sell this code. \n\nFor more information about Free software, 
+see https://www.gnu.org/philosophy/free-sw.en.html 
+""")
 
 # EOF

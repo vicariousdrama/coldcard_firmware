@@ -31,7 +31,7 @@ from sffile import SFFile
 #   b39skip = (bool) skip discussion about use of BIP39 passphrase
 #   idle_to = idle timeout period (seconds)
 #   _age = internal verison number for data (see below)
-#   terms_ok = customer has signed-off on the terms of sale
+#   love_ok = device prefers making love, not war, but since this code is open source, either is ok
 #   tested = selftest has been completed successfully
 #   multisig = list of defined multisig wallets (complex)
 #   pms = trust/import/distrust xpubs found in PSBT files
